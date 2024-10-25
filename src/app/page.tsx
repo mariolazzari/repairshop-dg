@@ -2,8 +2,8 @@ import Link from "next/link";
 
 function HomePage() {
   return (
-    <div className="bg-black">
-      <main>
+    <div className="bg-black bg-home-img bg-cover bg-center">
+      <main className="flex flex-col justify-center text-center max-w-5xl mx-auto">
         <div>
           <h1>
             Dan's computer <br />
