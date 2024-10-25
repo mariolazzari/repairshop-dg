@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Layout } from "@/types/Layout";
 import { geistMono, geistSans } from "./fonts";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Repair Shop",
@@ -10,11 +11,18 @@ export const metadata: Metadata = {
 
 function RootLayout({ children }: Layout) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
