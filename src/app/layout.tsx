@@ -5,8 +5,12 @@ import { geistMono, geistSans } from "./fonts";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Repair Shop",
+  title: {
+    template: "%s | Repair Shop",
+    default: "Repair Shop",
+  },
   description: "NextJS 15 by Dave Grey",
+  applicationName: "Repair Shop",
 };
 
 function RootLayout({ children }: Layout) {
