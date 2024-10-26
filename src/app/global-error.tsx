@@ -3,7 +3,7 @@ import { ErrorProps } from "@/types/ErrorProps";
 
 // Error boundaries must be Client Components
 
-function GlobalError({ error, reset }: ErrorProps) {
+function GlobalError({ reset }: ErrorProps) {
   return (
     // global-error must include html and body tags
     <html>
