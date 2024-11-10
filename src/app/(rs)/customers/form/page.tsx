@@ -1,6 +1,6 @@
 import { getCustomer } from "@/lib/queries/getCustomer";
 import { CustomerFormProps } from "./CustomerFormProps";
-import BackButton from "@/components/BackButton";
+import { BackButton } from "@/components/BackButton";
 
 async function CustomerFormPage({ searchParams }: CustomerFormProps) {
   try {

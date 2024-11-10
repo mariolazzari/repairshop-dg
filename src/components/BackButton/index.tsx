@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Button, ButtonProps } from "../ui/button";
 
-export default function BackButton({
+export function BackButton({
   title,
   className,
   variant,

@@ -1,3 +1,3 @@
 import { PageProps } from "@/types/PageProps";
 
-export type CustomerFormProps = PageProps<{}, { customerId: string }>;
+export type CustomerFormProps = PageProps<void, { customerId: string }>;
