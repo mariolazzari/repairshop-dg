@@ -1,38 +1,23 @@
 import { getCustomer } from "@/lib/queries/getCustomer";
 import { getTicket } from "@/lib/queries/getTicket";
-import { BackButton } from "@/components/BackButton";
 import { TicketFormProps } from "./TicketFormProps";
+import NotFound from "@/components/NotFound";
 
 async function TicketFormPage({ searchParams }: TicketFormProps) {
   const { customerId, ticketId } = await searchParams;
 
   if (!customerId && !ticketId) {
-    return (
-      <>
-        <h2>Customer Id and Ticket Id are mandatory</h2>
-        <BackButton title="Back" />
-      </>
-    );
+    return <NotFound title="Customer Id or Ticket Id required" />;
   }
 
   if (customerId) {
     const customer = await getCustomer(+customerId);
     if (!customer) {
-      return (
-        <>
-          <h2>Customer Id {customerId} not found</h2>
-          <BackButton title="Back" />
-        </>
-      );
+      return <NotFound title={`Customer Id ${customerId} not found`} />;
     }
 
     if (!customer.active) {
-      return (
-        <>
-          <h2>Customer Id {customerId} must be active</h2>
-          <BackButton title="Back" />
-        </>
-      );
+      return <NotFound title={`Customer Id ${customerId} must be active`} />;
     }
 
     // return ticket form
@@ -43,12 +28,7 @@ async function TicketFormPage({ searchParams }: TicketFormProps) {
     // edit ticket
     const ticket = await getTicket(+ticketId);
     if (!ticket) {
-      return (
-        <>
-          <h2>Ticket Id {ticketId} not found</h2>
-          <BackButton title="Back" />
-        </>
-      );
+      return <NotFound title={`Ticket id ${ticketId} not fouud`} />;
     }
 
     const customer = await getCustomer(ticket.customerId);

@@ -1,6 +1,6 @@
 import { getCustomer } from "@/lib/queries/getCustomer";
 import { CustomerFormProps } from "./CustomerFormProps";
-import { BackButton } from "@/components/BackButton";
+import NotFound from "@/components/NotFound";
 
 async function CustomerFormPage({ searchParams }: CustomerFormProps) {
   try {
@@ -9,15 +9,7 @@ async function CustomerFormPage({ searchParams }: CustomerFormProps) {
     if (customerId) {
       const customer = await getCustomer(+customerId);
       if (!customer) {
-        // customer not found
-        return (
-          <>
-            <h2 className="text-2xl mb-2">
-              Customer ID {customerId} not found
-            </h2>
-            <BackButton title="Back" />
-          </>
-        );
+        return <NotFound title={`Customer Id ${customerId} not found`} />;
       }
 
       // edit customer
